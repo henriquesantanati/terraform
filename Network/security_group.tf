@@ -32,7 +32,7 @@ resource "aws_security_group" "sg_application" {
 
   vpc_id = aws_vpc.main.id
 
-  tags {
+  tags = {
     Name = "SG Application"
   }
 }
@@ -58,7 +58,7 @@ resource "aws_security_group" "sg_rds" {
 
   vpc_id = aws_vpc.main.id
 
-  tags {
+  tags = {
     Name = "SG RDS"
   }
 }
