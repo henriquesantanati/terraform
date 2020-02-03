@@ -6,7 +6,7 @@ resource "aws_route_table" "public_route_table" {
     gateway_id = aws_internet_gateway.igw.id
   }
 
-  tags {
+  tags = {
     Name = "Public Subnet Route Table"
   }
 }
