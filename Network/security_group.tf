@@ -1,6 +1,7 @@
 resource "aws_security_group" "sg_application" {
   name        = "SG_Application"
   description = "Allow incoming HTTP/HTTPS connections & SSH access"
+  vpc_id = aws_vpc.main.id
 
   ingress {
     from_port   = 80
@@ -30,7 +31,11 @@ resource "aws_security_group" "sg_application" {
     self      = true
   }
 
-  vpc_id = aws_vpc.main.id
+  egress {
+    from_port       = 0
+    to_port         = 0
+    protocol        = "-1"
+    cidr_blocks     = ["0.0.0.0/0"]
 
   tags = {
     Name = "SG Application"
@@ -41,12 +46,13 @@ resource "aws_security_group" "sg_application" {
 resource "aws_security_group" "sg_rds" {
   name        = "SG_RDS"
   description = "Allow traffic from public subnet"
+  vpc_id = aws_vpc.main.id
 
   ingress {
-    from_port         = 0
-    to_port           = 0
-    protocol          = -1
-    security_group_id = aws_security_group.sg_application.id
+    from_port       = 0
+    to_port         = 0
+    protocol        = -1
+    security_groups = aws_security_group.sg_application.id
   }
 
   ingress {
@@ -56,7 +62,11 @@ resource "aws_security_group" "sg_rds" {
     self      = true
   }
 
-  vpc_id = aws_vpc.main.id
+  egress {
+    from_port       = 0
+    to_port         = 0
+    protocol        = "-1"
+    cidr_blocks     = ["0.0.0.0/0"]
 
   tags = {
     Name = "SG RDS"
