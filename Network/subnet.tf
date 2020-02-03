@@ -2,7 +2,7 @@ data "aws_availability_zones" "available" {
   state = "available"
 }
 
-resource "aws_subnet" "public-subnet[count.index]" {
+resource "aws_subnet" "public-subnet" {
   count             = 3
   vpc_id            = aws_vpc.main.id
   cidr_block        = "var.public_subnet_cidr_[count.index]"
@@ -13,7 +13,7 @@ resource "aws_subnet" "public-subnet[count.index]" {
   }
 }
 
-resource "aws_subnet" "private-subnet[count.index]" {
+resource "aws_subnet" "private-subnet" {
   count             = 3
   vpc_id            = aws_vpc.main.id
   cidr_block        = "var.private_subnet_cidr_[count.index]"
