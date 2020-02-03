@@ -43,7 +43,6 @@ resource "aws_security_group" "sg_application" {
   }
 }
 
-# Define the security group for private subnet
 resource "aws_security_group" "sg_rds" {
   name        = "SG_RDS"
   description = "Allow traffic from public subnet"
