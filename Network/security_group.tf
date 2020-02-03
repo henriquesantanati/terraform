@@ -53,7 +53,7 @@ resource "aws_security_group" "sg_rds" {
     from_port       = 0
     to_port         = 0
     protocol        = -1
-    security_groups = aws_security_group.sg_application.id
+    security_groups = [aws_security_group.sg_application.id]
   }
 
   ingress {
