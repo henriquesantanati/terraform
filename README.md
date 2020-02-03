@@ -1,2 +1,2 @@
 # terraform
-Terraform AWS Codes
+Terraform AWS Code
