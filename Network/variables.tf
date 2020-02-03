@@ -1,4 +1,4 @@
-variable "aws_region" {
+variable "region" {
   description = "Region for the VPC"
   default     = "sa-east-1"
 }
