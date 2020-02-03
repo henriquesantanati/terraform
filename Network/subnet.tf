@@ -13,7 +13,7 @@ resource "aws_subnet" "private-subnet" {
   count             = 3
   vpc_id            = aws_vpc.default.id
   cidr_block        = var.public_subnet_cidr_[count.index]
-  availability_zone =   availability_zone = "data.aws_availability_zones.all.names[count.index]"
+  availability_zone = data.aws_availability_zones.all.names[count.index]
 
   tags {
     Name = "Private Subnet [count.index]"
